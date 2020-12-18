@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='frame.css')}}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        .alert {
+          padding: 10px;
+          background-color: rgb(98, 164, 238);
+          color: white;
+          border-radius: 2px;
+          text-align: center;
+         
+        }
+        
+        .closebtn {
+          margin-left: 15px;
+          color: white;
+          font-weight: bold;
+          float: right;
+          font-size: 22px;
+          line-height: 20px;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+        
+        .closebtn:hover {
+          color: rgb(0, 0, 0);
+        }
+        </style>
+        </head>
+        <body>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert" role="alert" style="color: rgb(255, 255, 255); font-family: jura;">
+                <span>{{ message}}</span>
+                
+                <span class="closebtn"  onclick="this.parentElement.style.display='none';">&times;</span> 
+                
+            
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <div class="frame1">
+        <div class="tit">
+           <p> Add Faculty</p></div>
+    <div class="form">
+        
+
+        <form action="/faculty" method="POST">
+             <label for="fac_name">Faculty Name</label>
+          <input type="text"  name="fac_name" placeholder="Enter Faculty Name..." required>
+      
+          <label for="mobile">Mobile</label>
+          <input type="text" name="mobile" placeholder="Enter Subject Name....." required>
+      
+          <label for="degignation">Degignation</label>
+          <input type="text"  name="degignation" placeholder="Enter Subject Code" required>
+
+          <!-- <label for="regulation">Regulation </label>
+          <input type="text"  name="regulation" placeholder="Enter Regulation"> -->
+
+          <label for="department">Department </label>
+          <select  name="department" required>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="EEE">EEE</option>
+          </select>
+        
+          <input type="submit" name="name1234" value="submit">
+        </form>
+      </div>
+    </div>
+
+    <div class="frame1_5">
+        <div class="tit1_5">
+            <p> Add Subject</p></div>
+        <div class="form">
+    
+            <form action="/subject" method="POST">
+
+    <label for="sub_name">Subject Name</label>
+          <input type="text" name="sub_name" placeholder="Enter Subject Name....." required>
+      
+          <label for="branch">Department</label>
+          <select  name="branch" required>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="EEE">EEE</option>
+          </select>
+         
+          <label for="sub_code">Subject code</label>
+          <input type="text"  name="sub_code" placeholder="Enter Subject Code" required>
+
+          <label for="regulation">Regulation </label>
+          <input type="text"  name="regulation" placeholder="Enter Regulation" required>
+
+          <label for="faculty">Faculty Name</label>
+          <select  name="faculty" required>
+              {%for i in range(0,length)%}
+            <option value="{{result[i][0]}}">{{result[i][0]}}</option>
+                {%endfor%}
+          </select>
+          <input type="submit" name="subject" value="subject">
+            </form></div></div>
+    <div class="frame2">
+        <div class="title">
+           <p>Department</p> 
+        </div>
+        <div class="img" >
+
+            <img src="{{url_for('static',filename='department.svg')}}" alt="">
+        </div>
+        
+        <div class="dep">
+            
+            <!-- <label for="search">Department</label> -->
+            <div class="pack">
+                <form action="\search" method="POST">
+                <!-- <label for="search">Department</label> -->
+                <select name="department">
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="MECH">MECH</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="EEE">EEE</option>
+                  </select>
+                  <!-- <input type="submit" value="submit" name="submit"> -->
+           <div class="imag">
+               <!-- <input type="submit" value="submit" name="submit">sara -->
+           <button type="submit" name="submit" value="submit">
+               <img src="{{url_for('static',filename='mg.svg')}}" alt="">
+            </button>
+            </div>
+        </form>
+        </div>
+    
+            </div>
+        
+    </div>
+
+            
+    <div class="frame3">
+        <div class="title1">
+
+           <p> Delete Faculty</p>
+        </div>
+        <div class="img1" >
+
+            <img src="{{url_for('static',filename='sub.svg')}}" alt="">
+        </div>
+        <div class="dep1">
+            <!-- <label for="search">Department</label> -->
+            <form action="/delete" method="POST">
+            <div class="pack1">
+                <!-- <label for="search">Department</label> -->
+           <input type="text" name="delete"  placeholder="Enter department: ">
+           <div class="imag1">
+           <button type="submit" value="delete" name="delete"><img src="{{url_for('static',filename='mg.svg')}}" alt=""></button>
+           <!-- <input type="submit" name="submit" value="search_submitted"> -->
+            </div>
+        </div>
+    </form>
+            </div>
+    </div>
+        
+  
+
+
+    <div class="frame">
+        <div class="data">
+            {%for i in range(0,length_inf)%}
+            <div class="hold">
+                <form action="/task" method="post">
+            <div class="part1">
+                <a href="{{url_for('task')}}" >
+                <div class="fname"><input type="submit" name="fname"  value="{{inf[i][4]}}"></div></a>
+                <div class="subject"><input type="text" name="subject" value="{{inf[i][1]}}"></div>
+            </div>
+    
+            <div class="part2">
+                <div class="code"><input type="text" name="code" value="{{inf[i][2]}}"></div>
+                <div class="regulation"> <input type="text" name="reg" value="{{inf[i][3]}}"></div>
+            </div>
+        </div>
+    </form>
+        
+        <br>
+        {%endfor%}
+       <br>
+        
+        </div>
+    </div>
+
+    
+</body>
+</html>
+
+
+   

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale= 1.0">
+    <title>LIBRARY</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='task.css')}}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Jura&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="inf">
+        <div class="title">
+            <p>
+            Information</p>
+        </div>
+        <div class="fac">
+        <div class="pic">
+            <img src="{{url_for('static',filename='faculty.svg')}}" alt="">
+        </div>
+        <div class="data">
+            <div class="n1"><p>Name &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{form[0][1]}}</p></div>
+            <div class="n2"><p>Mobile Name &nbsp; :{{form[0][2]}}</p></div>
+            <div class="n3"><p>Salary &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :75000</p></div>
+            <div class="n4"><p>Degignation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:{{form[0][3]}}</p></div>
+            <div class="n5"><p>Department&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :{{form[0][4]}}</p></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
